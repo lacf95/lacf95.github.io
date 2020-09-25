@@ -131,6 +131,7 @@ end
 This way, the code clearly expresses its intention, and you didn’t need a special method for it, you just used a block that does what the previous `calculate_bar` method did. Now, within the same method, you read: 
 
 “Oh, this is a memoized value”
+
 “…And here is the source of that value”
 
 ## Final thoughts
