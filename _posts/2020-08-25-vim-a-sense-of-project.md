@@ -37,7 +37,8 @@ Even though it is not hard to do it, it is tedious, so I recommend you to use a 
 Vim comes out of the box with a file explorer named netrw, in order to use it, you can enter `:Exp` or `:Explorer` on normal mode. It will show a list of files in the current directory (you can navigate them with the usual keys), if you open a file and want to get back to the file explorer, you can use `:Rex` in normal mode.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-1.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 It seems that you can’t create new files or directories from it. That’s because it is such an obscure tool to use. Use `:help Explore` or press F1 on the explore screen to see the full list of commands.
@@ -45,7 +46,8 @@ It seems that you can’t create new files or directories from it. That’s beca
 For example, to create a new file in the current directory, use the `%` key; this will prompt you to name a new file.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-2.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 You can sort the explorer entries, open them on split or on another tab, hide dot-files, show/hide files with custom filters, create bookmarks, execute arbitrary commands to marked files, and a few other exciting commands.
@@ -55,7 +57,8 @@ If you happen to love the way trees present your project’s files, you may be b
 NERDTree allows a lot of plugins to enhance its capabilities; I’ll show you a few of them later on.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-3.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 You can create a shortcut to fast-toggle the NERDTree, in your config file:
@@ -71,7 +74,8 @@ Also, you can see the plugin documentation pressing ? when NERDTree is open.
 And what about searching for files by their name or contents? Here comes [FZF](https://vimawesome.com/plugin/fzf), it allows you to use the FZF tool for fuzzy file searching, and on top of that, it allows you to use any other searcher like ‘git grep’, ripgrep or the silversearcher (I use the ripgrep tool).
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-4.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 You can create a shortcut the same way as on the well-known [ctrlp](https://vimawesome.com/plugin/ctrlp-vim-red) finder, for doing so, you need to map the FZF plugin to the ctrl-p shortcut (and also configure FZF to use ripgrep as its default command):
@@ -85,7 +89,8 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 You can use the Rg tool to search for file contents:
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-5.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 You can map that command to `ctrl-s`:
@@ -103,7 +108,8 @@ By default, Vim comes with `:grep` and `:vimgrep`, they both allow you to filter
 1. And finally replacing them with `:cfdo %s/read_file/read/gc | update`
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-6.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 This method uses the Unix’s grep tool and won’t omit files that you may no want to use like `node_modules` or ignored files by your source control system; I’ll leave a couple of interesting posts at the end of this one so you can read more about this find-and-replace stuff.
@@ -114,7 +120,8 @@ You close Vim and call it a day, next morning, when you open the editor you prob
 In normal mode, enter `:mksession` to create a new session file in your working directory (by default called `Session.vim`), if you want to open Vim with that specific session, open Vim with the `-S` flag and you are good to go.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-7.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 The downside of using sessions is that you have to override them every time you have to change your workspace layout or open files. To overcome this issue, you can use [Obsession](https://vimawesome.com/plugin/obsession-vim) to manage all session-related stuff for you. Once installed and in normal mode, enter `:Obsession` to start tracking your session.
@@ -144,7 +151,8 @@ If you want to go directly to a function declaration, Vim has built-in support f
 To go to a code declaration, position the cursor on the specific method or class name and use `ctrl + ]`, if there’s a tags file with that definition, it will move you directly to its declaration.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-8.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 ## Code snippets
@@ -167,7 +175,8 @@ Since you can execute arbitrary commands in Vim, you can communicate with GIT, b
 Vim has built-in capabilities for spell-checking, highlighting, and correction. To enable them in normal mode enter `:set spell spelllang=en_us`. Use `[s` and `]s` to navigate between spelling errors, use `z=` to show the correction list, and use `zg` to add a new entry to the dictionary.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-9.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 ### Dictionary
@@ -176,7 +185,8 @@ Vim also has built-in Dictionary completion, to use it, your system should have 
 in normal mode enter `:set dictionary+=/usr/share/dict/words` to append it to existing dictionaries.
 
 <video class="post-video" controls>
-  <source src="{{ "/assets/images/posts/vim-a-sense-of-project-10.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.webm" | absolute_url }}" type="video/webm">
+  <source src="{{ "/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.mp4" | absolute_url }}" type="video/mp4">
 </video>
 
 Use `ctrl + x` and `ctrl + k` to open the completion modal, use the `ctrl + p` and `ctrl + n` shortcuts to navigate it.
