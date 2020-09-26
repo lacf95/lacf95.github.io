@@ -1,0 +1,11 @@
+.post-container figure.highlight { margin: 1em 0; padding: 1em; }
+
+.post-container figure.highlight pre { margin: 0; }
+
+.post-container .post-meta { margin-bottom: 2em; }
+
+.post-container h2 { margin-top: 2em; }
+
+.post-container .post-video { max-width: 600px; width: 100%; display: block; margin: 1em auto; }
+
+/*# sourceMappingURL=styles.css.map */

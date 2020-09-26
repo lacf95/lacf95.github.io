@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Memoization: Faster Ruby apps</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Memoization: Faster Ruby apps | Adrián Chávez</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Memoization: Faster Ruby apps" />
+<meta name="author" content="Adrián Chávez" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code." />
+<meta property="og:description" content="Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code." />
+<link rel="canonical" href="https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html" />
+<meta property="og:url" content="https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html" />
+<meta property="og:site_name" content="Adrián Chávez" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-01T17:00:00+00:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html"},"author":{"@type":"Person","name":"Adrián Chávez"},"headline":"Memoization: Faster Ruby apps","dateModified":"2020-04-01T17:00:00+00:00","url":"https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html","description":"Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code.","datePublished":"2020-04-01T17:00:00+00:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/images/profile.jpg" alt="Adrián Chávez" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Adrián Chávez</a>
+      </h2>
+      </div><p class="tagline">Ruby Developer</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/lacf95" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><nav class="navigation about-footer ">
+        <ul>
+          
+          <li>
+            <a href="/">Posts</a>
+          </li>
+          
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          
+        </ul>
+      </nav><p class="about-footer ">&copy;
+        2020</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/ruby/2020/04/01/memoization-faster-ruby-apps.html">
+    <h2 class="post-title">Memoization: Faster Ruby apps</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Apr 1, 2020</div><ul class="post-categories"><li>ruby</li></ul></div>
+  <div class="post">
+    <p>Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code.</p>
+
+<h2 id="what-is-memoization">What is Memoization?</h2>
+<p>Memoization is a technique where you can cache a value (like a process result) to use it later without the need to compute that value again. This has the potential to save a massive amount of computing/networking power, thus improving the general performance of your application.</p>
+
+<h2 id="how-does-it-work-in-ruby">How does it work in Ruby?</h2>
+<p>In Ruby, the easiest way to memoize a value is to assign it to an instance variable (since instance variables live long after an object method has finished).</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Foo</span>
+  <span class="k">def</span> <span class="nf">bar</span>
+    <span class="k">return</span> <span class="vi">@bar</span> <span class="k">if</span> <span class="vi">@bar</span>
+
+    <span class="vi">@bar</span> <span class="o">=</span> <span class="s1">'expensive value'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="no">Foo</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># =&gt; 'expensive value'</span>
+<span class="c1"># You'll keep getting the same value as long the foo instance lives.</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># =&gt; 'expensive value'</span></code></pre></figure>
+
+<p>You can make use of ruby’s conciseness with the <code class="language-plaintext highlighter-rouge">||=</code> (or equals) operator. Since instance variables won’t raise an exception when accessed before being declared, you can use the “or equals” operator:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Foo</span>
+  <span class="k">def</span> <span class="nf">bar</span>
+    <span class="vi">@bar</span> <span class="o">||=</span> <span class="s1">'expensive value'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="no">Foo</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># =&gt; 'expensive value'</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># =&gt; 'expensive value'</span></code></pre></figure>
+
+<p>Here we are saying to Ruby:</p>
+
+<p>“If you don’t have a truthy value for <code class="language-plaintext highlighter-rouge">@bar</code> variable, then assign it the value at the right, otherwise just return that value”</p>
+
+<p>This is a simple example, but what would happen if instead of a string value, that assignment made a database query? Or an API call? A heavy object creation?</p>
+
+<p>Here’s an example of a dummy user model with a dummy database connection object:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">User</span>
+  <span class="k">def</span> <span class="nf">save</span>
+    <span class="n">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:insert</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+  <span class="k">end</span>
+ 
+  <span class="k">def</span> <span class="nf">destroy</span>
+    <span class="n">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:destroy</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+  <span class="k">end</span>
+ 
+  <span class="kp">private</span>
+ 
+  <span class="k">def</span> <span class="nf">connection</span>
+    <span class="vi">@connection</span> <span class="o">||=</span> <span class="no">Database</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'John'</span><span class="p">)</span>
+<span class="c1"># This will assign the connection object since @connection is nil.</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">save</span>
+<span class="c1"># This will use the cached Database object in @connection.</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">destroy</span></code></pre></figure>
+
+<h2 id="how-to-update-cached-values">How to update cached values</h2>
+<p>There’s not a “clean” way of updating a cached value, the only way is to directly override the instance variable like so:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">update_bar</span>
+  <span class="vi">@bar</span> <span class="o">=</span> <span class="s1">'new bar'</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Keep in mind that memoized values’ ideal use case is for <strong>never-changing values.</strong></p>
+
+<h2 id="formatting-and-styling">Formatting and styling</h2>
+<p>When you need to memoize a not-so-straightforward value, you tend to write code like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">bar</span>
+  <span class="k">return</span> <span class="vi">@bar</span> <span class="k">if</span> <span class="vi">@bar</span>
+
+  <span class="n">step_value</span> <span class="o">=</span> <span class="n">some_method</span>
+  <span class="vi">@bar</span> <span class="o">=</span> <span class="n">another_method</span><span class="p">(</span><span class="n">step_value</span><span class="p">).</span><span class="nf">property</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Here you need to pay special attention to what each line of code does, so you start asking questions like:</p>
+
+<p>“Did you finish the routine early because a certain value is not present?”</p>
+
+<p>“Is this just an assignment method?”</p>
+
+<p>You can certainly rewrite the code so it removes that unwanted cognitive load from you:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">bar</span>
+  <span class="vi">@bar</span> <span class="o">||=</span> <span class="n">calculate_bar</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">calculate_bar</span>
+  <span class="n">step_value</span> <span class="o">=</span> <span class="n">some_method</span>
+  <span class="n">another_method</span><span class="p">(</span><span class="n">step_value</span><span class="p">).</span><span class="nf">property</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This will work; it does what it says it does, but now you have created a rather verbose method to encapsulate an obvious task.</p>
+
+<p>Finally, you can rewrite it, so it takes advantage of a Ruby block:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">bar</span>
+  <span class="vi">@bar</span> <span class="o">||=</span> <span class="k">begin</span>
+    <span class="n">step_value</span> <span class="o">=</span> <span class="n">some_method</span>
+    <span class="n">another_method</span><span class="p">(</span><span class="n">step_value</span><span class="p">).</span><span class="nf">property</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This way, the code clearly expresses its intention, and you didn’t need a special method for it, you just used a block that does what the previous <code class="language-plaintext highlighter-rouge">calculate_bar</code> method did. Now, within the same method, you read:</p>
+
+<p>“Oh, this is a memoized value”</p>
+
+<p>“…And here is the source of that value”</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>As you may see, Memoization can improve your application’s performance, and the greatest thing about it is that it comes with a little to no-downside on your code readability.</p>
+
+<p>Remember, to use it properly, you need to find the kind of calculated values and/or reused objects which are being processed expecting the same result over and over again in your application, then memoize them and enjoy your milliseconds of saved time!</p>
+
+<h2 id="notes">Notes</h2>
+<p>This is an updated version of this post:
+<a href="http://tangosource.com/blog/memoization-faster-ruby-app/">Memoization: Faster Ruby app</a></p>
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/lacf95" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><nav class="navigation about-footer ">
+        <ul>
+          
+          <li>
+            <a href="/">Posts</a>
+          </li>
+          
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          
+        </ul>
+      </nav><p class="about-footer ">&copy;
+        2020</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

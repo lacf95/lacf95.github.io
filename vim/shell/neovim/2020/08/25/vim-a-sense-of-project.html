@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Vim: A sense of project</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Vim: A sense of project | Adrián Chávez</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Vim: A sense of project" />
+<meta name="author" content="Adrián Chávez" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Vim (or Neovim) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands." />
+<meta property="og:description" content="Vim (or Neovim) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands." />
+<link rel="canonical" href="https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html" />
+<meta property="og:url" content="https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html" />
+<meta property="og:site_name" content="Adrián Chávez" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-25T17:00:00+00:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html"},"author":{"@type":"Person","name":"Adrián Chávez"},"headline":"Vim: A sense of project","dateModified":"2020-08-25T17:00:00+00:00","url":"https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html","description":"Vim (or Neovim) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands.","datePublished":"2020-08-25T17:00:00+00:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/images/profile.jpg" alt="Adrián Chávez" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Adrián Chávez</a>
+      </h2>
+      </div><p class="tagline">Ruby Developer</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/lacf95" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><nav class="navigation about-footer ">
+        <ul>
+          
+          <li>
+            <a href="/">Posts</a>
+          </li>
+          
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          
+        </ul>
+      </nav><p class="about-footer ">&copy;
+        2020</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html">
+    <h2 class="post-title">Vim: A sense of project</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 25, 2020</div><ul class="post-categories"><li>vim</li><li>shell</li><li>neovim</li></ul></div>
+  <div class="post">
+    <p>Vim (or <a href="https://neovim.io/">Neovim</a>) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands.</p>
+
+<p>Despite its benefits, there is a list of things which Vim can’t do like:</p>
+
+<ul>
+  <li>Advanced file management.</li>
+  <li>GIT integration.</li>
+  <li>Advanced code completion.</li>
+  <li>Code linting.</li>
+  <li>Pairing sessions.</li>
+  <li>Global find and replace.</li>
+</ul>
+
+<p>All of those are indispensable tools for everyday development. Are Vim users condemned to live without them? Not at all, and I’ll show you how you can create a better Vim set up so you can access the tools that you value the most and without losing the power of Vim.</p>
+
+<p><strong>Disclaimer:</strong> <em>This post is not a total-beginners guide to Vim. If you have previously configured Vim, then you are good to go.</em></p>
+
+<p>Vim’s built-in customizability allows the community to create plugins for it, and <a href="https://vimawesome.com/">VimAwesome</a> is the Hub for almost all public plugins available, check it out, as its name suggests: it is awesome (you can navigate it with the Vim keys).</p>
+
+<p>Adding plugins to Vim is straightforward:</p>
+
+<ol>
+  <li>Download it.</li>
+  <li>Add it on your config file (.vimrc or init.vim) by sourcing it.</li>
+  <li>Source again your config file or close/open Vim.</li>
+  <li>Enjoy!</li>
+</ol>
+
+<p>Even though it is not hard to do it, it is tedious, so I recommend you to use a Plugin manager like <a href="https://github.com/junegunn/vim-plug">Plug</a> or <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>. I recommend Plug because it is the one I have used.</p>
+
+<h2 id="file-management">File management</h2>
+
+<h3 id="netrw">netrw</h3>
+<p>Vim comes out of the box with a file explorer named netrw, in order to use it, you can enter <code class="language-plaintext highlighter-rouge">:Exp</code> or <code class="language-plaintext highlighter-rouge">:Explorer</code> on normal mode. It will show a list of files in the current directory (you can navigate them with the usual keys), if you open a file and want to get back to the file explorer, you can use <code class="language-plaintext highlighter-rouge">:Rex</code> in normal mode.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.mp4" type="video/mp4" />
+</video>
+
+<p>It seems that you can’t create new files or directories from it. That’s because it is such an obscure tool to use. Use <code class="language-plaintext highlighter-rouge">:help Explore</code> or press F1 on the explore screen to see the full list of commands.</p>
+
+<p>For example, to create a new file in the current directory, use the <code class="language-plaintext highlighter-rouge">%</code> key; this will prompt you to name a new file.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.mp4" type="video/mp4" />
+</video>
+
+<p>You can sort the explorer entries, open them on split or on another tab, hide dot-files, show/hide files with custom filters, create bookmarks, execute arbitrary commands to marked files, and a few other exciting commands.</p>
+
+<h3 id="nerdtree">NERDTree</h3>
+<p>If you happen to love the way trees present your project’s files, you may be better with the <a href="https://vimawesome.com/plugin/nerdtree-red">NERDTree</a> plugin, a powerful tool for file management.
+NERDTree allows a lot of plugins to enhance its capabilities; I’ll show you a few of them later on.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.mp4" type="video/mp4" />
+</video>
+
+<p>You can create a shortcut to fast-toggle the NERDTree, in your config file:</p>
+
+<figure class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="c">" By default, your leader is the \ key</span>
+nnoremap <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">f</span> <span class="p">:</span>NERDTreeToggle<span class="p">&lt;</span>CR<span class="p">&gt;</span></code></pre></figure>
+
+<p>Also, you can see the plugin documentation pressing ? when NERDTree is open.</p>
+
+<h3 id="fzf">FZF</h3>
+<p>And what about searching for files by their name or contents? Here comes <a href="https://vimawesome.com/plugin/fzf">FZF</a>, it allows you to use the FZF tool for fuzzy file searching, and on top of that, it allows you to use any other searcher like ‘git grep’, ripgrep or the silversearcher (I use the ripgrep tool).</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.mp4" type="video/mp4" />
+</video>
+
+<p>You can create a shortcut the same way as on the well-known <a href="https://vimawesome.com/plugin/ctrlp-vim-red">ctrlp</a> finder, for doing so, you need to map the FZF plugin to the ctrl-p shortcut (and also configure FZF to use ripgrep as its default command):</p>
+
+<figure class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="nb">noremap</span> <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span><span class="k">p</span><span class="p">&gt;</span> <span class="p">:</span>FZF<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="c">" Fuzzy finder configuration to use the ripgrep tool</span>
+<span class="k">let</span> $FZF_DEFAULT_COMMAND <span class="p">=</span> <span class="s1">'rg --files --hidden'</span></code></pre></figure>
+
+<p>You can use the Rg tool to search for file contents:</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.mp4" type="video/mp4" />
+</video>
+
+<p>You can map that command to <code class="language-plaintext highlighter-rouge">ctrl-s</code>:</p>
+
+<figure class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="nb">noremap</span> <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span>s<span class="p">&gt;</span> <span class="p">:</span>Rg<span class="p">&lt;</span>CR<span class="p">&gt;</span></code></pre></figure>
+
+<h2 id="project-wide-find-and-replace">Project-wide find and replace</h2>
+<p>Project-wide find and replace might be the hardest thing to achieve in Vim without feeling that you did something that you shouldn’t have. There are a lot of ways of doing this. I’ll present to you the easiest one (though, not the best).</p>
+
+<p>By default, Vim comes with <code class="language-plaintext highlighter-rouge">:grep</code> and <code class="language-plaintext highlighter-rouge">:vimgrep</code>, they both allow you to filter files by their content and save that list in the quickfist list. Once screened, you can make replacements only in those files by using the <code class="language-plaintext highlighter-rouge">:cfdo</code> command, for example, to find and replace the function named <code class="language-plaintext highlighter-rouge">read_file</code>:</p>
+
+<ol>
+  <li>First, you configure Vim’s hidden feature <code class="language-plaintext highlighter-rouge">:set hidden</code> to allow you to edit multiple files without errors for not having saved them.</li>
+  <li>This step is not needed, but makes the process faster by only processing the required files (select only ruby files with <code class="language-plaintext highlighter-rouge">read_file</code> in them) with <code class="language-plaintext highlighter-rouge">:grep -r read_file *.rb</code></li>
+  <li>And finally replacing them with <code class="language-plaintext highlighter-rouge">:cfdo %s/read_file/read/gc | update</code></li>
+</ol>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.mp4" type="video/mp4" />
+</video>
+
+<p>This method uses the Unix’s grep tool and won’t omit files that you may no want to use like <code class="language-plaintext highlighter-rouge">node_modules</code> or ignored files by your source control system; I’ll leave a couple of interesting posts at the end of this one so you can read more about this find-and-replace stuff.</p>
+
+<h2 id="project-workspace">Project workspace</h2>
+<p>You close Vim and call it a day, next morning, when you open the editor you probably have forgotten which files you were working on and how you arranged them. Well, you don’t have to go through that hassle anymore, Vim has sessions that allow you to save your workplace as you left them the last time.</p>
+
+<p>In normal mode, enter <code class="language-plaintext highlighter-rouge">:mksession</code> to create a new session file in your working directory (by default called <code class="language-plaintext highlighter-rouge">Session.vim</code>), if you want to open Vim with that specific session, open Vim with the <code class="language-plaintext highlighter-rouge">-S</code> flag and you are good to go.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.mp4" type="video/mp4" />
+</video>
+
+<p>The downside of using sessions is that you have to override them every time you have to change your workspace layout or open files. To overcome this issue, you can use <a href="https://vimawesome.com/plugin/obsession-vim">Obsession</a> to manage all session-related stuff for you. Once installed and in normal mode, enter <code class="language-plaintext highlighter-rouge">:Obsession</code> to start tracking your session.</p>
+
+<p>Remember always to start Vim with <code class="language-plaintext highlighter-rouge">vim -S</code> to use your <code class="language-plaintext highlighter-rouge">Session.vim</code> file.</p>
+
+<h2 id="code-completion">Code Completion</h2>
+<p>By default, Vim can complete based on dictionaries, opened buffers, and tags files; this can fall short compared to other text editors.</p>
+
+<p>Also, this is a controversial subject for Vim users, and there is no unanimous verdict on what a completion tool should or shouldn’t do, I’ll list a couple of plugins for code completion:</p>
+
+<ul>
+  <li><a href="https://vimawesome.com/plugin/coc-nvim">COC</a> has support for a lot of languages, function signature completion, and a handful of extensions.</li>
+  <li><a href="https://vimawesome.com/plugin/youcompleteme">youcompleteme</a> has a lot of search engines for different languages.</li>
+  <li><a href="https://vimawesome.com/plugin/supertab">Supertab</a> allows you to use the complete tool using the tab key.</li>
+</ul>
+
+<h2 id="code-linters">Code linters</h2>
+<p>There are a bunch of useful plugins for code linting, but the following two are my picks:</p>
+
+<ul>
+  <li><a href="https://vimawesome.com/plugin/ale">Ale</a></li>
+  <li><a href="https://vimawesome.com/plugin/neomake-impatience-and-laziness">Neomake</a></li>
+</ul>
+
+<p>Whichever plugin you want to use will work (I use Neomake).</p>
+
+<h2 id="code-navigation">Code navigation</h2>
+<p>If you want to go directly to a function declaration, Vim has built-in support for it. Vim takes advantage of the tags file, but you need <a href="https://github.com/universal-ctags/ctags">Ctags</a> to generate that file. The downside of it is that you have to update that file every time you make a significant change on your codebase, to avoid that tedious process, use <a href="https://vimawesome.com/plugin/vim-gutentags">Gutentags</a>, which handles all the tags-related tasks.</p>
+
+<p>To go to a code declaration, position the cursor on the specific method or class name and use <code class="language-plaintext highlighter-rouge">ctrl + ]</code>, if there’s a tags file with that definition, it will move you directly to its declaration.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.mp4" type="video/mp4" />
+</video>
+
+<h2 id="code-snippets">Code snippets</h2>
+<p>I don’t use snippets, but if you do, there are a lot of plugins for it. The most known and used is the <a href="https://vimawesome.com/plugin/vim-snippets">Snipmate &amp; Nltisnip Snippets</a> plugin.</p>
+
+<p>Also, for commenting code, you can use the <a href="https://vimawesome.com/plugin/the-nerd-commenter">NERD Commenter</a> plugin.</p>
+
+<h2 id="pairing-sessions">Pairing sessions</h2>
+<p>Vim by itself, doesn’t have remote pairing capabilities. Still, it can be achieved with <a href="https://tmate.io/">tmate</a> for fast SSH session creation with read-only capabilities (uses your Tmux configuration if you already have it).</p>
+
+<h2 id="git-integration">GIT integration</h2>
+<p>Since you can execute arbitrary commands in Vim, you can communicate with GIT, but that is not that fun, there are a couple of plugins to enhance the GIT capabilities inside Vim:</p>
+
+<ul>
+  <li><a href="https://vimawesome.com/plugin/nerdtree-git-plugin">NERDTree Git Plugin</a> shows visual elements to your NERDTree, so you know that something is going on with them</li>
+  <li><a href="https://vimawesome.com/plugin/vim-gitgutter">Vim Gutter</a> uses the status column to highlight new, edited, and deleted lines in your open buffers, show differences, etc.</li>
+  <li><a href="https://vimawesome.com/plugin/fugitive-vim">Fugitive</a> to call any GIT command inside VIm, with fantastic diff, log, and blame capabilities.</li>
+</ul>
+
+<h2 id="spelling-and-dictionary">Spelling and Dictionary</h2>
+<h3 id="spelling">Spelling</h3>
+<p>Vim has built-in capabilities for spell-checking, highlighting, and correction. To enable them in normal mode enter <code class="language-plaintext highlighter-rouge">:set spell spelllang=en_us</code>. Use <code class="language-plaintext highlighter-rouge">[s</code> and <code class="language-plaintext highlighter-rouge">]s</code> to navigate between spelling errors, use <code class="language-plaintext highlighter-rouge">z=</code> to show the correction list, and use <code class="language-plaintext highlighter-rouge">zg</code> to add a new entry to the dictionary.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.mp4" type="video/mp4" />
+</video>
+
+<h3 id="dictionary">Dictionary</h3>
+<p>Vim also has built-in Dictionary completion, to use it, your system should have a words file, in Linux by default there’s a dictionary file at <code class="language-plaintext highlighter-rouge">/usr/share/dict/words</code> (you can download them),</p>
+
+<p>in normal mode enter <code class="language-plaintext highlighter-rouge">:set dictionary+=/usr/share/dict/words</code> to append it to existing dictionaries.</p>
+
+<video class="post-video" controls="">
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.webm" type="video/webm" />
+  <source src="https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.mp4" type="video/mp4" />
+</video>
+
+<p>Use <code class="language-plaintext highlighter-rouge">ctrl + x</code> and <code class="language-plaintext highlighter-rouge">ctrl + k</code> to open the completion modal, use the <code class="language-plaintext highlighter-rouge">ctrl + p</code> and <code class="language-plaintext highlighter-rouge">ctrl + n</code> shortcuts to navigate it.</p>
+
+<h3 id="grammar">Grammar</h3>
+<p>You can integrate a grammar checker with the <a href="https://vimawesome.com/plugin/languagetool">LanguageTool</a> plugin, it integrates with the LanguageTool application.</p>
+
+<h2 id="large-file-editing">Large file editing</h2>
+<p>Vim tends to choke when you open a large file due to all the line numeration, syntax highlighting, and all the plugins working on that specific file. To edit a particular file, you can disable the tools mentioned above and then edit the file, or use the <a href="https://vimawesome.com/plugin/largefile">LargeFile</a> plugin to do it for you.</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>All of this seems like a lot, and you may ask, why should I even care to do all of this if Visual Studio Code, or “Insert my favorite code editor” does that and more right out of the box?</p>
+
+<p>Well, the thing here is that Vim allows you to tailor the text editor as you please. Without significant shortcomings, Vim can be faster than any other code editor you have ever used, ready to be used in almost any Unix system that you come across (and windows too).</p>
+
+<p>For me, it is the experience, that rewarding feeling that you get when you happen to do a tedious thing with a couple of commands; tools make the work experience, I’m sure that woodworkers don’t like a dull saw nor painters like cheap brushes.</p>
+
+<h3 id="useful-blog-posts-and-resources">Useful blog posts and resources:</h3>
+<ul>
+  <li><a href="https://github.com/lacf95/dot-files/blob/master/nvim/init.vim">My Vim config file</a></li>
+  <li><a href="https://tomfern.com/posts/vim-for-writers">10 Vim plugins for Writers</a></li>
+  <li><a href="https://shapeshed.com/vim-netrw/">Vim: you don’t need NERDTree or (maybe) netrw</a></li>
+  <li><a href="http://vimcasts.org/episodes/project-wide-find-and-replace/">Project-wide find and replace</a></li>
+  <li><a href="https://www.mattlayman.com/blog/2019/supercharging-vim-blazing-fast-search/">Supercharging Vim: Blazing fast search and global replace</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">Visual Studio Code Vim</a></li>
+  <li><a href="https://vim.fandom.com/wiki/Browsing_programs_with_tags">Browsing programs with tags</a></li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+<p>This is an updated version of this post:
+<a href="http://tangosource.com/blog/vim-a-sense-of-project/">Vim: A sense of project</a></p>
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/lacf95" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/lacf95" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><nav class="navigation about-footer ">
+        <ul>
+          
+          <li>
+            <a href="/">Posts</a>
+          </li>
+          
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          
+        </ul>
+      </nav><p class="about-footer ">&copy;
+        2020</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

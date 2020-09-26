@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss",
+		"_sass/main.scss"
+	],
+	"sourcesContent": [
+		"@import \"main\";\n",
+		".post-container {\n  figure.highlight {\n    margin: 1em 0;\n    padding: 1em;\n    pre {\n      margin: 0;\n    }\n  }\n\n  .post-meta {\n    margin-bottom: 2em;\n  }\n  \n  h2 {\n    margin-top: 2em;\n  }\n\n  .post-video {\n    max-width: 600px;\n    width: 100%;\n    display: block;\n    margin: 1em auto;\n  }\n}\n"
+	],
+	"names": [],
+	"mappings": "ACAA,AACE,eADa,CACb,MAAM,AAAA,UAAU,CAAC,EACf,MAAM,EAAE,KAAK,EACb,OAAO,EAAE,GAAG,GAIb;;AAPH,AAII,eAJW,CACb,MAAM,AAAA,UAAU,CAGd,GAAG,CAAC,EACF,MAAM,EAAE,CAAC,GACV;;AANL,AASE,eATa,CASb,UAAU,CAAC,EACT,aAAa,EAAE,GAAG,GACnB;;AAXH,AAaE,eAba,CAab,EAAE,CAAC,EACD,UAAU,EAAE,GAAG,GAChB;;AAfH,AAiBE,eAjBa,CAiBb,WAAW,CAAC,EACV,SAAS,EAAE,KAAK,EAChB,KAAK,EAAE,IAAI,EACX,OAAO,EAAE,KAAK,EACd,MAAM,EAAE,QAAQ,GACjB"
+}

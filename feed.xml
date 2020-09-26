@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://www.lacf95.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.lacf95.com/" rel="alternate" type="text/html" /><updated>2020-09-26T15:24:54+00:00</updated><id>https://www.lacf95.com/feed.xml</id><title type="html">Adrián Chávez</title><subtitle>Adrián Chávez's personal blog</subtitle><author><name>Adrián Chávez</name></author><entry><title type="html">Vim: A sense of project</title><link href="https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html" rel="alternate" type="text/html" title="Vim: A sense of project" /><published>2020-08-25T17:00:00+00:00</published><updated>2020-08-25T17:00:00+00:00</updated><id>https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project</id><content type="html" xml:base="https://www.lacf95.com/vim/shell/neovim/2020/08/25/vim-a-sense-of-project.html">&lt;p&gt;Vim (or &lt;a href=&quot;https://neovim.io/&quot;&gt;Neovim&lt;/a&gt;) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands.&lt;/p&gt;
+
+&lt;p&gt;Despite its benefits, there is a list of things which Vim can’t do like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Advanced file management.&lt;/li&gt;
+  &lt;li&gt;GIT integration.&lt;/li&gt;
+  &lt;li&gt;Advanced code completion.&lt;/li&gt;
+  &lt;li&gt;Code linting.&lt;/li&gt;
+  &lt;li&gt;Pairing sessions.&lt;/li&gt;
+  &lt;li&gt;Global find and replace.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of those are indispensable tools for everyday development. Are Vim users condemned to live without them? Not at all, and I’ll show you how you can create a better Vim set up so you can access the tools that you value the most and without losing the power of Vim.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; &lt;em&gt;This post is not a total-beginners guide to Vim. If you have previously configured Vim, then you are good to go.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Vim’s built-in customizability allows the community to create plugins for it, and &lt;a href=&quot;https://vimawesome.com/&quot;&gt;VimAwesome&lt;/a&gt; is the Hub for almost all public plugins available, check it out, as its name suggests: it is awesome (you can navigate it with the Vim keys).&lt;/p&gt;
+
+&lt;p&gt;Adding plugins to Vim is straightforward:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download it.&lt;/li&gt;
+  &lt;li&gt;Add it on your config file (.vimrc or init.vim) by sourcing it.&lt;/li&gt;
+  &lt;li&gt;Source again your config file or close/open Vim.&lt;/li&gt;
+  &lt;li&gt;Enjoy!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Even though it is not hard to do it, it is tedious, so I recommend you to use a Plugin manager like &lt;a href=&quot;https://github.com/junegunn/vim-plug&quot;&gt;Plug&lt;/a&gt; or &lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;Vundle&lt;/a&gt;. I recommend Plug because it is the one I have used.&lt;/p&gt;
+
+&lt;h2 id=&quot;file-management&quot;&gt;File management&lt;/h2&gt;
+
+&lt;h3 id=&quot;netrw&quot;&gt;netrw&lt;/h3&gt;
+&lt;p&gt;Vim comes out of the box with a file explorer named netrw, in order to use it, you can enter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Exp&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Explorer&lt;/code&gt; on normal mode. It will show a list of files in the current directory (you can navigate them with the usual keys), if you open a file and want to get back to the file explorer, you can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Rex&lt;/code&gt; in normal mode.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/01.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;It seems that you can’t create new files or directories from it. That’s because it is such an obscure tool to use. Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:help Explore&lt;/code&gt; or press F1 on the explore screen to see the full list of commands.&lt;/p&gt;
+
+&lt;p&gt;For example, to create a new file in the current directory, use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt; key; this will prompt you to name a new file.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/02.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;You can sort the explorer entries, open them on split or on another tab, hide dot-files, show/hide files with custom filters, create bookmarks, execute arbitrary commands to marked files, and a few other exciting commands.&lt;/p&gt;
+
+&lt;h3 id=&quot;nerdtree&quot;&gt;NERDTree&lt;/h3&gt;
+&lt;p&gt;If you happen to love the way trees present your project’s files, you may be better with the &lt;a href=&quot;https://vimawesome.com/plugin/nerdtree-red&quot;&gt;NERDTree&lt;/a&gt; plugin, a powerful tool for file management.
+NERDTree allows a lot of plugins to enhance its capabilities; I’ll show you a few of them later on.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/03.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;You can create a shortcut to fast-toggle the NERDTree, in your config file:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&quot; By default, your leader is the \ key&lt;/span&gt;
+nnoremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;leader&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;NERDTreeToggle&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Also, you can see the plugin documentation pressing ? when NERDTree is open.&lt;/p&gt;
+
+&lt;h3 id=&quot;fzf&quot;&gt;FZF&lt;/h3&gt;
+&lt;p&gt;And what about searching for files by their name or contents? Here comes &lt;a href=&quot;https://vimawesome.com/plugin/fzf&quot;&gt;FZF&lt;/a&gt;, it allows you to use the FZF tool for fuzzy file searching, and on top of that, it allows you to use any other searcher like ‘git grep’, ripgrep or the silversearcher (I use the ripgrep tool).&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/04.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;You can create a shortcut the same way as on the well-known &lt;a href=&quot;https://vimawesome.com/plugin/ctrlp-vim-red&quot;&gt;ctrlp&lt;/a&gt; finder, for doing so, you need to map the FZF plugin to the ctrl-p shortcut (and also configure FZF to use ripgrep as its default command):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;nb&quot;&gt;noremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;FZF&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&quot; Fuzzy finder configuration to use the ripgrep tool&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; $FZF_DEFAULT_COMMAND &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rg --files --hidden'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can use the Rg tool to search for file contents:&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/05.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;You can map that command to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl-s&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;nb&quot;&gt;noremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;s&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;Rg&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;project-wide-find-and-replace&quot;&gt;Project-wide find and replace&lt;/h2&gt;
+&lt;p&gt;Project-wide find and replace might be the hardest thing to achieve in Vim without feeling that you did something that you shouldn’t have. There are a lot of ways of doing this. I’ll present to you the easiest one (though, not the best).&lt;/p&gt;
+
+&lt;p&gt;By default, Vim comes with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:grep&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:vimgrep&lt;/code&gt;, they both allow you to filter files by their content and save that list in the quickfist list. Once screened, you can make replacements only in those files by using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:cfdo&lt;/code&gt; command, for example, to find and replace the function named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read_file&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First, you configure Vim’s hidden feature &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:set hidden&lt;/code&gt; to allow you to edit multiple files without errors for not having saved them.&lt;/li&gt;
+  &lt;li&gt;This step is not needed, but makes the process faster by only processing the required files (select only ruby files with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read_file&lt;/code&gt; in them) with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:grep -r read_file *.rb&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;And finally replacing them with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:cfdo %s/read_file/read/gc | update&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/06.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;This method uses the Unix’s grep tool and won’t omit files that you may no want to use like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; or ignored files by your source control system; I’ll leave a couple of interesting posts at the end of this one so you can read more about this find-and-replace stuff.&lt;/p&gt;
+
+&lt;h2 id=&quot;project-workspace&quot;&gt;Project workspace&lt;/h2&gt;
+&lt;p&gt;You close Vim and call it a day, next morning, when you open the editor you probably have forgotten which files you were working on and how you arranged them. Well, you don’t have to go through that hassle anymore, Vim has sessions that allow you to save your workplace as you left them the last time.&lt;/p&gt;
+
+&lt;p&gt;In normal mode, enter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:mksession&lt;/code&gt; to create a new session file in your working directory (by default called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Session.vim&lt;/code&gt;), if you want to open Vim with that specific session, open Vim with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-S&lt;/code&gt; flag and you are good to go.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/07.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;The downside of using sessions is that you have to override them every time you have to change your workspace layout or open files. To overcome this issue, you can use &lt;a href=&quot;https://vimawesome.com/plugin/obsession-vim&quot;&gt;Obsession&lt;/a&gt; to manage all session-related stuff for you. Once installed and in normal mode, enter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:Obsession&lt;/code&gt; to start tracking your session.&lt;/p&gt;
+
+&lt;p&gt;Remember always to start Vim with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim -S&lt;/code&gt; to use your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Session.vim&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-completion&quot;&gt;Code Completion&lt;/h2&gt;
+&lt;p&gt;By default, Vim can complete based on dictionaries, opened buffers, and tags files; this can fall short compared to other text editors.&lt;/p&gt;
+
+&lt;p&gt;Also, this is a controversial subject for Vim users, and there is no unanimous verdict on what a completion tool should or shouldn’t do, I’ll list a couple of plugins for code completion:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/coc-nvim&quot;&gt;COC&lt;/a&gt; has support for a lot of languages, function signature completion, and a handful of extensions.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/youcompleteme&quot;&gt;youcompleteme&lt;/a&gt; has a lot of search engines for different languages.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/supertab&quot;&gt;Supertab&lt;/a&gt; allows you to use the complete tool using the tab key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-linters&quot;&gt;Code linters&lt;/h2&gt;
+&lt;p&gt;There are a bunch of useful plugins for code linting, but the following two are my picks:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/ale&quot;&gt;Ale&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/neomake-impatience-and-laziness&quot;&gt;Neomake&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Whichever plugin you want to use will work (I use Neomake).&lt;/p&gt;
+
+&lt;h2 id=&quot;code-navigation&quot;&gt;Code navigation&lt;/h2&gt;
+&lt;p&gt;If you want to go directly to a function declaration, Vim has built-in support for it. Vim takes advantage of the tags file, but you need &lt;a href=&quot;https://github.com/universal-ctags/ctags&quot;&gt;Ctags&lt;/a&gt; to generate that file. The downside of it is that you have to update that file every time you make a significant change on your codebase, to avoid that tedious process, use &lt;a href=&quot;https://vimawesome.com/plugin/vim-gutentags&quot;&gt;Gutentags&lt;/a&gt;, which handles all the tags-related tasks.&lt;/p&gt;
+
+&lt;p&gt;To go to a code declaration, position the cursor on the specific method or class name and use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + ]&lt;/code&gt;, if there’s a tags file with that definition, it will move you directly to its declaration.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/08.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;h2 id=&quot;code-snippets&quot;&gt;Code snippets&lt;/h2&gt;
+&lt;p&gt;I don’t use snippets, but if you do, there are a lot of plugins for it. The most known and used is the &lt;a href=&quot;https://vimawesome.com/plugin/vim-snippets&quot;&gt;Snipmate &amp;amp; Nltisnip Snippets&lt;/a&gt; plugin.&lt;/p&gt;
+
+&lt;p&gt;Also, for commenting code, you can use the &lt;a href=&quot;https://vimawesome.com/plugin/the-nerd-commenter&quot;&gt;NERD Commenter&lt;/a&gt; plugin.&lt;/p&gt;
+
+&lt;h2 id=&quot;pairing-sessions&quot;&gt;Pairing sessions&lt;/h2&gt;
+&lt;p&gt;Vim by itself, doesn’t have remote pairing capabilities. Still, it can be achieved with &lt;a href=&quot;https://tmate.io/&quot;&gt;tmate&lt;/a&gt; for fast SSH session creation with read-only capabilities (uses your Tmux configuration if you already have it).&lt;/p&gt;
+
+&lt;h2 id=&quot;git-integration&quot;&gt;GIT integration&lt;/h2&gt;
+&lt;p&gt;Since you can execute arbitrary commands in Vim, you can communicate with GIT, but that is not that fun, there are a couple of plugins to enhance the GIT capabilities inside Vim:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/nerdtree-git-plugin&quot;&gt;NERDTree Git Plugin&lt;/a&gt; shows visual elements to your NERDTree, so you know that something is going on with them&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/vim-gitgutter&quot;&gt;Vim Gutter&lt;/a&gt; uses the status column to highlight new, edited, and deleted lines in your open buffers, show differences, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vimawesome.com/plugin/fugitive-vim&quot;&gt;Fugitive&lt;/a&gt; to call any GIT command inside VIm, with fantastic diff, log, and blame capabilities.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;spelling-and-dictionary&quot;&gt;Spelling and Dictionary&lt;/h2&gt;
+&lt;h3 id=&quot;spelling&quot;&gt;Spelling&lt;/h3&gt;
+&lt;p&gt;Vim has built-in capabilities for spell-checking, highlighting, and correction. To enable them in normal mode enter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:set spell spelllang=en_us&lt;/code&gt;. Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[s&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;]s&lt;/code&gt; to navigate between spelling errors, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;z=&lt;/code&gt; to show the correction list, and use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zg&lt;/code&gt; to add a new entry to the dictionary.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/09.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;h3 id=&quot;dictionary&quot;&gt;Dictionary&lt;/h3&gt;
+&lt;p&gt;Vim also has built-in Dictionary completion, to use it, your system should have a words file, in Linux by default there’s a dictionary file at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/share/dict/words&lt;/code&gt; (you can download them),&lt;/p&gt;
+
+&lt;p&gt;in normal mode enter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:set dictionary+=/usr/share/dict/words&lt;/code&gt; to append it to existing dictionaries.&lt;/p&gt;
+
+&lt;video class=&quot;post-video&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;source src=&quot;https://www.lacf95.com/assets/videos/posts/2020-08-25-vim-a-sense-of-project/10.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + k&lt;/code&gt; to open the completion modal, use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + p&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + n&lt;/code&gt; shortcuts to navigate it.&lt;/p&gt;
+
+&lt;h3 id=&quot;grammar&quot;&gt;Grammar&lt;/h3&gt;
+&lt;p&gt;You can integrate a grammar checker with the &lt;a href=&quot;https://vimawesome.com/plugin/languagetool&quot;&gt;LanguageTool&lt;/a&gt; plugin, it integrates with the LanguageTool application.&lt;/p&gt;
+
+&lt;h2 id=&quot;large-file-editing&quot;&gt;Large file editing&lt;/h2&gt;
+&lt;p&gt;Vim tends to choke when you open a large file due to all the line numeration, syntax highlighting, and all the plugins working on that specific file. To edit a particular file, you can disable the tools mentioned above and then edit the file, or use the &lt;a href=&quot;https://vimawesome.com/plugin/largefile&quot;&gt;LargeFile&lt;/a&gt; plugin to do it for you.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;All of this seems like a lot, and you may ask, why should I even care to do all of this if Visual Studio Code, or “Insert my favorite code editor” does that and more right out of the box?&lt;/p&gt;
+
+&lt;p&gt;Well, the thing here is that Vim allows you to tailor the text editor as you please. Without significant shortcomings, Vim can be faster than any other code editor you have ever used, ready to be used in almost any Unix system that you come across (and windows too).&lt;/p&gt;
+
+&lt;p&gt;For me, it is the experience, that rewarding feeling that you get when you happen to do a tedious thing with a couple of commands; tools make the work experience, I’m sure that woodworkers don’t like a dull saw nor painters like cheap brushes.&lt;/p&gt;
+
+&lt;h3 id=&quot;useful-blog-posts-and-resources&quot;&gt;Useful blog posts and resources:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/lacf95/dot-files/blob/master/nvim/init.vim&quot;&gt;My Vim config file&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tomfern.com/posts/vim-for-writers&quot;&gt;10 Vim plugins for Writers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://shapeshed.com/vim-netrw/&quot;&gt;Vim: you don’t need NERDTree or (maybe) netrw&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://vimcasts.org/episodes/project-wide-find-and-replace/&quot;&gt;Project-wide find and replace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mattlayman.com/blog/2019/supercharging-vim-blazing-fast-search/&quot;&gt;Supercharging Vim: Blazing fast search and global replace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=vscodevim.vim&quot;&gt;Visual Studio Code Vim&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vim.fandom.com/wiki/Browsing_programs_with_tags&quot;&gt;Browsing programs with tags&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;p&gt;This is an updated version of this post:
+&lt;a href=&quot;http://tangosource.com/blog/vim-a-sense-of-project/&quot;&gt;Vim: A sense of project&lt;/a&gt;&lt;/p&gt;</content><author><name>Adrián Chávez</name></author><category term="vim" /><category term="shell" /><category term="neovim" /><summary type="html">Vim (or Neovim) is an excellent text editor, it is lightweight, ubiquitous and customizable in its core, but those are secondary traits, what makes Vim shine are its fast-writing capabilities with powerful keyboard-centered composable commands.</summary></entry><entry><title type="html">Memoization: Faster Ruby apps</title><link href="https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html" rel="alternate" type="text/html" title="Memoization: Faster Ruby apps" /><published>2020-04-01T17:00:00+00:00</published><updated>2020-04-01T17:00:00+00:00</updated><id>https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps</id><content type="html" xml:base="https://www.lacf95.com/ruby/2020/04/01/memoization-faster-ruby-apps.html">&lt;p&gt;Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-memoization&quot;&gt;What is Memoization?&lt;/h2&gt;
+&lt;p&gt;Memoization is a technique where you can cache a value (like a process result) to use it later without the need to compute that value again. This has the potential to save a massive amount of computing/networking power, thus improving the general performance of your application.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-it-work-in-ruby&quot;&gt;How does it work in Ruby?&lt;/h2&gt;
+&lt;p&gt;In Ruby, the easiest way to memoize a value is to assign it to an instance variable (since instance variables live long after an object method has finished).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt;
+
+    &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'expensive value'&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 'expensive value'&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# You'll keep getting the same value as long the foo instance lives.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 'expensive value'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can make use of ruby’s conciseness with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;||=&lt;/code&gt; (or equals) operator. Since instance variables won’t raise an exception when accessed before being declared, you can use the “or equals” operator:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'expensive value'&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 'expensive value'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; 'expensive value'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here we are saying to Ruby:&lt;/p&gt;
+
+&lt;p&gt;“If you don’t have a truthy value for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@bar&lt;/code&gt; variable, then assign it the value at the right, otherwise just return that value”&lt;/p&gt;
+
+&lt;p&gt;This is a simple example, but what would happen if instead of a string value, that assignment made a database query? Or an API call? A heavy object creation?&lt;/p&gt;
+
+&lt;p&gt;Here’s an example of a dummy user model with a dummy database connection object:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;destroy&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:destroy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+ 
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@connection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Database&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'John'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# This will assign the connection object since @connection is nil.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# This will use the cached Database object in @connection.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;destroy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;how-to-update-cached-values&quot;&gt;How to update cached values&lt;/h2&gt;
+&lt;p&gt;There’s not a “clean” way of updating a cached value, the only way is to directly override the instance variable like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_bar&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'new bar'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Keep in mind that memoized values’ ideal use case is for &lt;strong&gt;never-changing values.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;formatting-and-styling&quot;&gt;Formatting and styling&lt;/h2&gt;
+&lt;p&gt;When you need to memoize a not-so-straightforward value, you tend to write code like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some_method&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another_method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;property&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here you need to pay special attention to what each line of code does, so you start asking questions like:&lt;/p&gt;
+
+&lt;p&gt;“Did you finish the routine early because a certain value is not present?”&lt;/p&gt;
+
+&lt;p&gt;“Is this just an assignment method?”&lt;/p&gt;
+
+&lt;p&gt;You can certainly rewrite the code so it removes that unwanted cognitive load from you:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calculate_bar&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate_bar&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some_method&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;another_method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;property&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will work; it does what it says it does, but now you have created a rather verbose method to encapsulate an obvious task.&lt;/p&gt;
+
+&lt;p&gt;Finally, you can rewrite it, so it takes advantage of a Ruby block:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some_method&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;another_method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;property&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This way, the code clearly expresses its intention, and you didn’t need a special method for it, you just used a block that does what the previous &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calculate_bar&lt;/code&gt; method did. Now, within the same method, you read:&lt;/p&gt;
+
+&lt;p&gt;“Oh, this is a memoized value”&lt;/p&gt;
+
+&lt;p&gt;“…And here is the source of that value”&lt;/p&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;As you may see, Memoization can improve your application’s performance, and the greatest thing about it is that it comes with a little to no-downside on your code readability.&lt;/p&gt;
+
+&lt;p&gt;Remember, to use it properly, you need to find the kind of calculated values and/or reused objects which are being processed expecting the same result over and over again in your application, then memoize them and enjoy your milliseconds of saved time!&lt;/p&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;p&gt;This is an updated version of this post:
+&lt;a href=&quot;http://tangosource.com/blog/memoization-faster-ruby-app/&quot;&gt;Memoization: Faster Ruby app&lt;/a&gt;&lt;/p&gt;</content><author><name>Adrián Chávez</name></author><category term="ruby" /><summary type="html">Once your application has lived enough to grow older, it tends to become slower with each new feature that includes, the performance impact that your code has in a certain programming language and/or platform is often overlooked, which might make you prone to blame those tools, instead of analyzing what and how your implementation made your application slower. Memoization may help you to improve your application’s speed with a non-significant impact on readability or flexibility on your code.</summary></entry></feed>
